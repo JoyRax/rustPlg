@@ -25,7 +25,6 @@ namespace Oxide.Plugins
         {
             ConnectedPlayers = new List<BasePlayer>();
             CurrentEvent = EventsName.None;
-            AddCovalenceCommand("test", nameof(TestCommand));
         }
         #endregion
 
@@ -186,8 +185,8 @@ namespace Oxide.Plugins
         #endregion
 
 
-
-        private void TestCommand(IPlayer player, string command, string[] args)
+        [ConsoleCommand("eventstest")]
+        private void CmdConsole(ConsoleSystem.Arg args)
         {
             if (CurrentEvent != EventsName.None)
             {
