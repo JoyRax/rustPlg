@@ -10,7 +10,7 @@ namespace Oxide.Plugins
 {
     [Info("SkyGameEvents", "JoyRax", "0.0.1")]
     [Description("Game events for players.")]
-    class SkyGameEvents : RustPlugin
+    class SkyGameEvents : CovalencePlugin
     {
         private void Init()
         {
@@ -58,23 +58,7 @@ namespace Oxide.Plugins
 
         void SaveConfig(ConfigData config) => Config.WriteObject(config, true);
 
-        [ConsoleCommand("eventstest")]
-        private void CmdConsole(ConsoleSystem.Arg args)
-        {
-            if (CurrentEvent != EventsName.None)
-            {
-                player.Message("Уже запущен другой ивент!");
-                return;
-            }
-
-            StartEvent_KingOfTheHill();
-        }
-
-        [Command("testevents")]
-        private void TestCommand(IPlayer player, string command, string[] args)
-        {
-            player.Reply("Test successful!");
-        }
+        
 
 
         void OnPlayerConnected(BasePlayer player)
@@ -91,7 +75,24 @@ namespace Oxide.Plugins
                 ConnectedPlayers.Remove(player);
         }
 
+        [Command("mplm")]
+        private void CmdConsole(ConsoleSystem.Arg args)
+        {
+            if (CurrentEvent != EventsName.None)
+            {
+                player.Reply("Уже запущен другой ивент!");
+                return;
+            }
 
+            player.Reply("Test EVENT!");
+            StartEvent_KingOfTheHill();
+        }
+
+        [Command("gplm")]
+        private void TestCommand(IPlayer player, string command, string[] args)
+        {
+            player.Reply("Test successful!");
+        }
 
         void StartEvent_KingOfTheHill()
         {
