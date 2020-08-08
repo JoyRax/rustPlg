@@ -8,7 +8,7 @@ namespace Oxide.Plugins
 {
     [Info("Epic Stuff", "Unknown Author", "0.1.0")]
     [Description("Makes epic stuff happen")]
-    class EpicStuff : CovalencePlugin
+    class TestSky : CovalencePlugin
     {
         private void Init()
         {
