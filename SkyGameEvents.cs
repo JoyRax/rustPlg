@@ -23,7 +23,6 @@ namespace Oxide.Plugins
             KingOfTheHill
         }
 
-        #region Initialization
         ConfigData configData;
         EventsName CurrentEvent;
         List<BasePlayer> ConnectedPlayers;
@@ -33,11 +32,7 @@ namespace Oxide.Plugins
             ConnectedPlayers = new List<BasePlayer>();
             CurrentEvent = EventsName.None;
         }
-        #endregion
 
-
-
-        #region Configuration
         class ConfigData
         {
             public bool Allow_KingOfTheHill { get; set; }
@@ -62,11 +57,26 @@ namespace Oxide.Plugins
         void LoadConfigVariables() => configData = Config.ReadObject<ConfigData>();
 
         void SaveConfig(ConfigData config) => Config.WriteObject(config, true);
-        #endregion
+
+        [ConsoleCommand("eventstest")]
+        private void CmdConsole(ConsoleSystem.Arg args)
+        {
+            if (CurrentEvent != EventsName.None)
+            {
+                player.Message("Уже запущен другой ивент!");
+                return;
+            }
+
+            StartEvent_KingOfTheHill();
+        }
+
+        [Command("testevents")]
+        private void TestCommand(IPlayer player, string command, string[] args)
+        {
+            player.Reply("Test successful!");
+        }
 
 
-
-        #region System Events
         void OnPlayerConnected(BasePlayer player)
         {
             if (player != null)
@@ -80,11 +90,9 @@ namespace Oxide.Plugins
             if (player != null)
                 ConnectedPlayers.Remove(player);
         }
-        #endregion
 
 
 
-        #region Description of Events
         void StartEvent_KingOfTheHill()
         {
             if (!configData.Allow_KingOfTheHill) 
@@ -188,26 +196,6 @@ namespace Oxide.Plugins
 
                 countTick++;
             });
-        }
-        #endregion
-
-
-        [ConsoleCommand("eventstest")]
-        private void CmdConsole(ConsoleSystem.Arg args)
-        {
-            if (CurrentEvent != EventsName.None)
-            {
-                player.Message("Уже запущен другой ивент!");
-                return;
-            }
-
-            StartEvent_KingOfTheHill();
-        }
-
-        [Command("testevents")]
-        private void TestCommand(IPlayer player, string command, string[] args)
-        {
-            player.Reply("Test successful!");
         }
     }
 }
