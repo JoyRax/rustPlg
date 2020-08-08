@@ -10,7 +10,7 @@ namespace Oxide.Plugins
 {
     [Info("SkyGameEvents", "JoyRax", "0.0.1")]
     [Description("Game events for players.")]
-    class SkyGameEvents : CovalencePlugin
+    class SkyGameEvents : RustPlugin
     {
         private void Init()
         {
@@ -24,43 +24,10 @@ namespace Oxide.Plugins
         }
 
         ConfigData configData;
-        EventsName CurrentEvent;
-        List<BasePlayer> ConnectedPlayers;
-
-        void OnServerInitialized()
-        {
-            ConnectedPlayers = new List<BasePlayer>();
-            CurrentEvent = EventsName.None;
-        }
-
-        class ConfigData
-        {
-            public bool Allow_KingOfTheHill { get; set; }
-        }
-
-        protected override void LoadDefaultConfig()
-        {
-            var config = new ConfigData
-            {
-                Allow_KingOfTheHill = true
-            };
-
-            SaveConfig(config);
-        }
-
-        void LoadVariables()
-        {
-            LoadConfigVariables();
-            SaveConfig();
-        }
-
-        void LoadConfigVariables() => configData = Config.ReadObject<ConfigData>();
-
-        void SaveConfig(ConfigData config) => Config.WriteObject(config, true);
+        EventsName CurrentEvent = EventsName.None;
+        List<BasePlayer> ConnectedPlayers = EventsName.None;
 
         
-
-
         void OnPlayerConnected(BasePlayer player)
         {
             if (player != null)
@@ -76,7 +43,7 @@ namespace Oxide.Plugins
         }
 
         [Command("mplm")]
-        private void CmdConsole(ConsoleSystem.Arg args)
+        private void CmdConsole(IPlayer player, string command, string[] args)
         {
             if (CurrentEvent != EventsName.None)
             {
