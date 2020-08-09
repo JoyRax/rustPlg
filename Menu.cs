@@ -1,6 +1,7 @@
 ﻿using Oxide.Core.Plugins;
 using Oxide.Game.Rust.Cui;
 using Oxide.Core.Logging;
+using Oxide.Core;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -428,8 +429,8 @@ namespace Oxide.Plugins
 
             Color color = new Color32(r, g, b, a);
 
-            LogInfo("INIT COLOR MENU~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            LogInfo($"{color.r:F2} ~ {color.g:F2} ~ {color.b:F2} ~ {color.a:F2}");
+            Interface.Oxide.LogWarning("INIT COLOR MENU~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Interface.Oxide.LogWarning($"{color.r:F2} ~ {color.g:F2} ~ {color.b:F2} ~ {color.a:F2}");
 
             return $"{color.r:F2} {color.g:F2} {color.b:F2} {color.a:F2}";
         }
