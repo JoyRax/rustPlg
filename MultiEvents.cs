@@ -9,7 +9,6 @@ using System.Collections;
 using System.Linq;
 using Random = UnityEngine.Random;
 using Oxide.Core.Libraries.Covalence;
-using Oxide.Core.Libraries.Covalence.IPlayer;
 
 namespace Oxide.Plugins
 {
@@ -2814,7 +2813,7 @@ namespace Oxide.Plugins
             var mount = player.GetMounted();
             if (mount != null) mount.DismountPlayer(player);
             if (player.net?.connection != null) player.ClientRPCPlayer(null, player, "StartLoading");
-            player.IPlayer.kill();
+            player.Die();
             player.RespawnAt(position, Quaternion.identity);
             if (player.net?.connection != null) player.ClientRPCPlayer(null, player, "ForcePositionTo", position);
             if (player.net?.connection != null) player.SetPlayerFlag(BasePlayer.PlayerFlags.ReceivingSnapshot, true);

@@ -22,7 +22,7 @@ namespace Oxide.Plugins
         }
 
         EventsName CurrentEvent = EventsName.None;
-        List<BasePlayer> ConnectedPlayers = EventsName.None;
+        List<BasePlayer> ConnectedPlayers = new List<BasePlayer>();
 
         void OnPlayerConnected(BasePlayer player)
         {
@@ -51,7 +51,7 @@ namespace Oxide.Plugins
         {
             foreach(var player in ConnectedPlayers)
             {
-                if (player == null && player.IsConnected)
+                if (player == null)
                 {
                     continue;
                 }
@@ -70,7 +70,7 @@ namespace Oxide.Plugins
                 {
                     foreach(var player in ConnectedPlayers)
                     {
-                        if (player == null && player.IsConnected)
+                        if (player == null)
                         {
                             continue;
                         }
@@ -82,7 +82,7 @@ namespace Oxide.Plugins
                 {
                     foreach(var player in ConnectedPlayers)
                     {
-                        if (player == null && player.IsConnected)
+                        if (player == null)
                         {
                             continue;
                         }
@@ -92,7 +92,7 @@ namespace Oxide.Plugins
 
                         foreach(var _player in retingPlayer.Keys)
                         {
-                            if (_player == null && _player.IsConnected)
+                            if (_player == null)
                             {
                                 continue;
                             }
@@ -120,14 +120,14 @@ namespace Oxide.Plugins
 
                     foreach(var player in ConnectedPlayers)
                     {
-                        if (player == null && player.IsConnected)
+                        if (player == null)
                         {
                             continue;
                         }
 
                         foreach(var _player in retingPlayer.Keys)
                         {
-                            if (_player == null && _player.IsConnected)
+                            if (_player == null
                             {
                                 continue;
                             }
@@ -151,12 +151,12 @@ namespace Oxide.Plugins
 
                     foreach(var player in ConnectedPlayers)
                     {
-                        if (player == null && player.IsConnected)
+                        if (player == null)
                         {
                             continue;
                         }
 
-                        if (Winner == null && Winner.IsConnected)
+                        if (Winner == null)
                         {
                             player.Message("Победитель ивента King Of The Hill: {0}, набравший высоту: {1}", Winner.Name, Score);
                         }
