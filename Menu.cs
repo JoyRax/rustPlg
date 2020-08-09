@@ -213,7 +213,7 @@ namespace Oxide.Plugins
                 Components =
                 {
                     new CuiImageComponent {FadeIn = 0.25f, Color = HexToRustFormat("#7A7A7AFF")},
-                    new CuiRectTransformComponent {AnchorMin = "0.275 0.6986135", AnchorMax = "0.7070313 0.7500031"}
+                    new CuiRectTransformComponent {AnchorMin = "-0.003906235 0", AnchorMax = "0.9992187 1.005556"}
                 }
             });
 
@@ -426,6 +426,9 @@ namespace Oxide.Plugins
             var a = byte.Parse(str.Substring(6, 2), NumberStyles.HexNumber);
 
             Color color = new Color32(r, g, b, a);
+
+            Puts("INIT COLOR MENU~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Puts($"{color.r:F2} ~ {color.g:F2} ~ {color.b:F2} ~ {color.a:F2}")
 
             return $"{color.r:F2} {color.g:F2} {color.b:F2} {color.a:F2}";
         }
