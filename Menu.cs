@@ -428,7 +428,7 @@ namespace Oxide.Plugins
             Color color = new Color32(r, g, b, a);
 
             Puts("INIT COLOR MENU~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Puts($"{color.r:F2} ~ {color.g:F2} ~ {color.b:F2} ~ {color.a:F2}")
+            Puts($"{color.r:F2} ~ {color.g:F2} ~ {color.b:F2} ~ {color.a:F2}");
 
             return $"{color.r:F2} {color.g:F2} {color.b:F2} {color.a:F2}";
         }
