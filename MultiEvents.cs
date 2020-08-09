@@ -2893,8 +2893,8 @@ namespace Oxide.Plugins
                     Items = instance.GetPlayerItems(player)
                 });
                 
-                ClearTeleport(player, EventPosition + new Vector3(0, 5, 0));
                 player.inventory.Strip();
+                ClearTeleport(player, EventPosition + new Vector3(0, 5, 0));
                 player.health = 100;
                 player.metabolism.hydration.value = 250;
                 player.metabolism.calories.value = 500;
@@ -2907,9 +2907,9 @@ namespace Oxide.Plugins
                 
                 var pInfo = PlayerConnected[player.userID];
 
-                player.metabolism.Reset();
-                
                 ClearTeleport(player, pInfo.position + new Vector3(0, 1, 0));
+
+                player.metabolism.Reset();
 
                 player.children.RemoveAll(x => x is DroppedItem);
                 
